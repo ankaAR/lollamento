@@ -196,12 +196,22 @@
                 }
                 tableBody.appendChild(row);
             }
+            // Obtengo la fecha y hora actual en formato argento, porque es un lolla en argentina.
+            const currentDateTime = new Date();
+            const formattedDateTime = currentDateTime.toLocaleString('es-AR', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+            });
 
             // Aca te meto el seed en el footer
             let footerRow = document.createElement('tr');
             let footerCell = document.createElement('td');
             footerCell.colSpan = 9;
-            footerCell.textContent = `Seed: ${seed}`;
+            footerCell.textContent = `Seed: ${seed} |  Fecha y hora: ${formattedDateTime}`;
             footerCell.classList.add('footer-cell');
             footerRow.appendChild(footerCell);
             tableFooter.appendChild(footerRow);
